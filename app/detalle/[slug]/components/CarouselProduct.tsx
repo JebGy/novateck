@@ -14,7 +14,7 @@ function CarouselProduct() {
   const { currentProduct } = useProduct();
   return (
     <div className="col-span-1 p-4">
-      <Carousel className="w-full max-w-xl mx-auto">
+      <Carousel className="w-full max-w-2xl mx-auto">
         <CarouselContent>
           {currentProduct.images.map((v, i) => (
             <CarouselItem key={v + i}>

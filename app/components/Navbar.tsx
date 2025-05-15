@@ -9,28 +9,43 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import Image from "next/image";
-import logo from "@/public/logo.png"
+import logo from "@/public/logo.png";
 
 function Navbar() {
   return (
     <nav className="bg-blue-800 sticky top-0 w-full px-4 py-2 grid grid-cols-12 items-center gap-4 text-white place-items-center">
-      <Image src={logo} alt="logo" width={800} height={800} className="lg:h-30 lg:w-24 h-32 w-32 col-span-12 lg:col-span-1"/>
+      <Image
+        src={logo}
+        alt="logo"
+        width={800}
+        height={800}
+        className="lg:h-24 lg:w-24 h-32 w-32 col-span-12 lg:col-span-1"
+      />
       <input
         placeholder="Buscar un producto"
         className="w-full bg-stone-100 rounded-full text-stone-800 placeholder:text-stone-500 px-4 py-1 lg:col-span-8 col-span-full"
       ></input>
-      <section className="col-span-full lg:col-span-3 flex flex-row gap-8 items-center justify-between">
-        <NavButton className="">
-          <h2>Hola,</h2>
+      <section className="col-span-full lg:col-span-3 flex flex-row gap-8 items-center justify-end w-full">
+        <NavButton className="flex flex-row items-center justify-center">
           <SignedOut>
+            <h2>Hola,</h2>
             <SignInButton>Iniciar sesión</SignInButton>
           </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+            <SignedIn>
+            <UserButton
+              appearance={{
+              elements: {
+                userButtonAvatarBox: {
+                width: "2.5rem",
+                height: "2.5rem",
+                },
+              },
+              }}
+            />
+            </SignedIn>
         </NavButton>
-        <NavButton>Mis compras</NavButton>
-        <NavButton>
+        <NavButton className="flex flex-row items-center justify-center">Mis compras</NavButton>
+        <NavButton className="flex flex-row items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

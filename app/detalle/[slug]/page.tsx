@@ -4,7 +4,7 @@ import DetailProduct from "./components/DetailProduct";
 
 function page() {
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-2 gap-2 p-4">
       <CarouselProduct />
       <DetailProduct />
     </div>
