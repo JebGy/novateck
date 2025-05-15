@@ -2,14 +2,21 @@ export interface Product {
   id: string;
   name: string;
   brand: string;
-  category: 'CELULARES' | 'LAPTOPS' | 'TABLETS' | 'COMPUTADORAS' | 'SMARTWATCH';
+  category: CATEGORIAS;
   price: number;
-  imageUrl: string;
+  images: string[];
   stock: number;
   colors: string[];
   description?: string;
 }
 
+export enum CATEGORIAS {
+  CELULARES = "CELULARES",
+  LAPTOPS = "LAPTOPS",
+  TABLETS = "TABLETS",
+  COMPUTADORAS = "COMPUTADORAS",
+  SMARTWATCH = "SMARTWATCH",
+}
 
 export interface User {
   id: string;
@@ -31,12 +38,12 @@ export interface Cart {
   total: number;
 }
 
-export type PaymentMethod = 'YAPE' | 'TARJETA' | 'PLIN';
+export type PaymentMethod = "YAPE" | "TARJETA" | "PLIN";
 
 export interface PaymentInfo {
   method: PaymentMethod;
   transactionId: string;
-  status: 'PENDING' | 'COMPLETED' | 'FAILED';
+  status: "PENDING" | "COMPLETED" | "FAILED";
 }
 
 export interface Order {
@@ -46,5 +53,5 @@ export interface Order {
   totalAmount: number;
   payment: PaymentInfo;
   orderDate: string; // ISO date string
-  deliveryStatus: 'EN_PROCESO' | 'ENVIADO' | 'ENTREGADO' | 'CANCELADO';
+  deliveryStatus: "EN_PROCESO" | "ENVIADO" | "ENTREGADO" | "CANCELADO";
 }

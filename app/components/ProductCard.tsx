@@ -1,4 +1,8 @@
+"use client";
+import { useProduct } from "@/store/ProductStore";
+import { CATEGORIAS, Product } from "@/types";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 function ProductCard(props: {
@@ -7,8 +11,26 @@ function ProductCard(props: {
   title: string;
   price: number;
 }) {
+  const productStore = useProduct();
+  const router = useRouter();
   return (
-    <div className="w-full h-full flex flex-col rounded-lg overflow-hidden shadow">
+    <div
+      onClick={() => {
+        productStore.setCurrentProduct({
+          brand: "SAMSUNG",
+          category: CATEGORIAS.CELULARES,
+          colors: ["red"],
+          id: "1000",
+          images: props.images,
+          name: props.title,
+          price: props.price,
+          stock: 100,
+          description: "Modelo Nuevo de este producto maravilloso",
+        } as Product);
+        router.push(`/detalle/${props.title}`)
+      }}
+      className="w-full h-full flex flex-col rounded-lg overflow-hidden shadow"
+    >
       <Image
         src={
           props.images.length && props.images[0] !== ""
