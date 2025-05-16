@@ -13,8 +13,8 @@ import React from "react";
 function CarouselProduct() {
   const { currentProduct } = useProduct();
   return (
-    <div className="col-span-1 p-4">
-      <Carousel className="w-full max-w-2xl mx-auto">
+    <div className="z-10 col-span-4 p-4 w-full flex flex-row items-center justify-center">
+      <Carousel className=" w-full max-w-2xl lg:w-full mx-auto">
         <CarouselContent>
           {currentProduct.images.map((v, i) => (
             <CarouselItem key={v + i}>

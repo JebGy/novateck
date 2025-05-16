@@ -1,12 +1,18 @@
 import React from "react";
 import CarouselProduct from "./components/CarouselProduct";
 import DetailProduct from "./components/DetailProduct";
+import ComentsList from "./components/ComentsList";
 
 function page() {
   return (
-    <div className="grid grid-cols-2 gap-2 p-4">
+    <div className="grid grid-cols-12 gap-16 p-4">
+      <span className="col-span-2"></span>
       <CarouselProduct />
       <DetailProduct />
+      <span className="col-span-2"></span>
+      <span className="col-span-2"></span>
+      <ComentsList />
+      <span className="col-span-2"></span>
     </div>
   );
 }

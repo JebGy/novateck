@@ -5,9 +5,19 @@ export interface Product {
   category: CATEGORIAS;
   price: number;
   images: string[];
+
   stock: number;
   colors: string[];
   description?: string;
+  comments: Comment[];
+  ratings: number[];
+}
+
+export interface Comment {
+  userImage: string;
+  userName: string;
+  rating: number;
+  opinion: string;
 }
 
 export enum CATEGORIAS {
