@@ -48,7 +48,7 @@ function ProductForm({ onSubmit }: ProductFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-4 col-span-1 row-span-full bg-white p-4 border-r-2"
+      className="space-y-4 col-span-2 row-span-full bg-white p-4 border-r-2"
     >
       <h2 className="text-lg font-bold">Agregar producto</h2>
       <label className="block">

@@ -51,7 +51,6 @@ export interface Cart {
 export type PaymentMethod = "YAPE" | "TARJETA" | "PLIN";
 
 export interface PaymentInfo {
-  method: PaymentMethod;
   transactionId: string;
   status: "PENDING" | "COMPLETED" | "FAILED";
 }
