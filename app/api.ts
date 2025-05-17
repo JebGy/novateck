@@ -27,7 +27,7 @@ export const api = {
             currency_id: "PEN",
           })),
           notification_url:
-            "https://novateck-seven.vercel.app//api/mercadopago/pago",
+            "https://novateck-seven.vercel.app/api/mercadopago/pago",
 
           metadata: {
             cart,
