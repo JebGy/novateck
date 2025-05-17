@@ -10,9 +10,9 @@ function Navbar() {
   const path = usePathname();
 
   return (
-    <nav className={
-      `z-20 bg-blue-800 sticky top-0 w-full px-4 py-2 grid grid-cols-12 items-center gap-4 text-white place-items-center`
-    }>
+    <nav
+      className={`z-20 bg-blue-800 sticky top-0 w-full px-4 py-2 grid grid-cols-12 items-center gap-4 text-white place-items-center`}
+    >
       <Image
         src={logo}
         alt="logo"
@@ -20,7 +20,7 @@ function Navbar() {
         height={800}
         className="lg:h-24 lg:w-24 h-32 w-32 col-span-12 lg:col-span-1"
       />
-      {!path.includes("admin") && (
+      {!path!.includes("admin") && (
         <>
           <input
             placeholder="Buscar un producto"
