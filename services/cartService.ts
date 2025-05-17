@@ -1,4 +1,4 @@
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, deleteDoc } from "firebase/firestore";
 import { db } from "../lib/firebase";
 import { Cart } from "@/types";
 
@@ -27,5 +27,5 @@ export const saveCart = async (userId: string, cart: Cart) => {
 };
 export const deleteCart = async (userId: string) => {
   const cartRef = doc(db, "carts", userId);
-  await setDoc(cartRef, {}, { merge: false });
+  await deleteDoc(cartRef);
 };
