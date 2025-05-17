@@ -63,14 +63,14 @@ function CartPage() {
                       className="rounded"
                     />
                     <div>
-                      <div className="font-semibold">{item.product.name}</div>
+                      <div className="font-semibold w-16 lg:w-fit">{item.product.name}</div>
                       <div className="text-xs text-stone-500">
                         {item.product.brand}
                       </div>
                     </div>
                   </td>
-                  <td className="py-2">{item.selectedColor}</td>
-                  <td className="py-2">{item.quantity}</td>
+                  <td className="py-2 ">{item.selectedColor}</td>
+                  <td className="py-2 ">{item.quantity}</td>
                   <td className="py-2">S/ {item.product.price}</td>
                   <td className="py-2 font-semibold">
                     S/ {(item.product.price * item.quantity).toFixed(2)}
