@@ -13,8 +13,8 @@ import React from "react";
 function CarouselProduct() {
   const { currentProduct } = useProduct();
   return (
-    <div className="z-10 col-span-4 p-4 w-full flex flex-row items-center justify-center">
-      <Carousel className=" w-full max-w-2xl lg:w-full mx-auto">
+    <div className="z-10 col-span-4 lg:col-span-4 lg:p-4 p-16 w-full flex flex-row items-center justify-center">
+      <Carousel className=" w-full max-w-xl lg:max-w-2xl lg:w-full mx-auto">
         <CarouselContent>
           {currentProduct &&
             currentProduct.images.map((v, i) => (

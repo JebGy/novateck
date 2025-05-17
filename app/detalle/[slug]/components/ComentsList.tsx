@@ -28,7 +28,7 @@ function ComentsList() {
   }
 
   return (
-    <div className="col-span-8 pt-8 border-t-2 gap-4 flex flex-col">
+    <div className="lg:col-span-8 col-span-4 pt-8 border-t-2 gap-4 flex flex-col">
       <h1 className="font-bold text-xl">Comentarios</h1>
       <form
         onSubmit={(e) => {

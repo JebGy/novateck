@@ -7,14 +7,14 @@ import ComentsList from "./components/ComentsList";
 
 function Page() {
   return (
-    <div className="grid grid-cols-12 gap-16 p-4">
-      <span className="col-span-2"></span>
+    <div className="grid lg:grid-cols-12 grid-cols-4 col-span-4 gap-16 p-4">
+      <span className="lg:col-span-2 "></span>
       <CarouselProduct />
       <DetailProduct />
-      <span className="col-span-2"></span>
-      <span className="col-span-2"></span>
+      <span className="lg:col-span-2 "></span>
+      <span className="lg:col-span-2 "></span>
       <ComentsList />
-      <span className="col-span-2"></span>
+      <span className="lg:col-span-2 "></span>
     </div>
   );
 }
