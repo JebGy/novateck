@@ -7,13 +7,26 @@ import { useUser } from "@clerk/nextjs";
 import { add } from "@/app/actions";
 
 function CartPage() {
-  const [cart, setCart] = useState<Cart>();
   const { user } = useUser();
   useEffect(() => {
     if (user) {
-      getCart(user.id).then((v) => setCart(v!));
+      getCart(user.id)
+        .then((v) => setCart(v!))
+        .catch((err) => {
+          console.error("Error al cargar el carrito:", err);
+          setCart({
+            items: [],
+            total: 0,
+            userId: user.id,
+          });
+        });
     }
   }, [user]);
+  const [cart, setCart] = useState<Cart>({
+    items: [],
+    total: 0,
+    userId: user?.id || "",
+  });
 
   return (
     <div className="max-w-4xl mx-auto p-4">
@@ -21,7 +34,7 @@ function CartPage() {
       <div className="bg-white rounded-lg shadow p-4 mb-6">
         {!cart ? (
           <p className="text-center text-stone-500">Sin datos</p>
-        ): (
+        ) : (
           <table className="w-full text-left">
             <thead>
               <tr className="border-b">
