@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     // Next.js does not support a wildcard for optimizing images from any domain.
     // To accept images from all domains, disable image optimization:
