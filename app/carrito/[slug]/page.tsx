@@ -20,10 +20,8 @@ function CartPage() {
       <h1 className="text-2xl font-bold mb-6">Carrito de compras</h1>
       <div className="bg-white rounded-lg shadow p-4 mb-6">
         {!cart ? (
-          <p className="text-center text-stone-500">Cargando carrito...</p>
-        ) : cart.items.length === 0 ? (
-          <p className="text-center text-stone-500">Tu carrito está vacío.</p>
-        ) : (
+          <p className="text-center text-stone-500">Sin datos</p>
+        ): (
           <table className="w-full text-left">
             <thead>
               <tr className="border-b">
