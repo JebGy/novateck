@@ -1,7 +1,4 @@
 import { api, mercadopago } from "@/app/api";
-import { createOrder, updateOrderPaymentStatus } from "@/services/orderService";
-import { createPayment } from "@/services/pagoService";
-import { Cart, Order } from "@/types";
 import { Payment } from "mercadopago";
 
 import { NextApiRequest, NextApiResponse } from "next";
