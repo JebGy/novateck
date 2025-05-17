@@ -1,9 +1,10 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { Cart, CartItem, Product, CATEGORIAS } from "@/types";
+import { Cart } from "@/types";
 import Image from "next/image";
 import { getCart } from "@/services/cartService";
 import { useUser } from "@clerk/nextjs";
+import { add } from "@/app/actions";
 
 function CartPage() {
   const [cart, setCart] = useState<Cart>();
@@ -71,7 +72,12 @@ function CartPage() {
       </div>
       <div className="flex flex-col items-end gap-2">
         <div className="text-lg font-semibold">Total: S/ {cart?.total}</div>
-        <button className="bg-blue-800 text-white rounded-full px-6 py-3 text-lg hover:bg-blue-900 transition">
+        <button
+          onClick={() => {
+            add(cart!);
+          }}
+          className="bg-blue-800 text-white rounded-full px-6 py-3 text-lg hover:bg-blue-900 transition"
+        >
           Finalizar compra
         </button>
       </div>
