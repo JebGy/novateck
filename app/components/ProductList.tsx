@@ -1,22 +1,16 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
+import { useProduct } from "@/store/ProductStore";
+import { getAllProducts } from "@/services/productService";
 
 function ProductList() {
-  const [products, setProducts] = useState<
-    {
-      id: number;
-      images: string[];
-      title: string;
-      price:number
-    }[]
-  >([]);
+  const { products, setProductCache } = useProduct();
 
   function getProducts() {
-    fetch("https://api.escuelajs.co/api/v1/categories/2/products")
-      .then((response) => response.json())
+    getAllProducts()
       .then((data) => {
-        setProducts(data);
+        setProductCache(data);
       })
       .catch((error) => console.error("Error fetching products:", error));
   }

@@ -9,7 +9,7 @@ interface ProductListAdminProps {
 
 function ProductListAdmin({ products, onEdit, onDelete }: ProductListAdminProps) {
   return (
-    <div className="bg-white rounded shadow p-4 mt-6">
+    <div className="bg-white rounded row-span-1 h-full p-4">
       <h2 className="text-lg font-bold mb-2">Productos registrados</h2>
       <table className="w-full text-left">
         <thead>
@@ -24,15 +24,25 @@ function ProductListAdmin({ products, onEdit, onDelete }: ProductListAdminProps)
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr key={product.id} className="border-b hover:bg-stone-50">
-              <td className="py-2">{product.name}</td>
-              <td className="py-2">{product.brand}</td>
-              <td className="py-2">{product.category}</td>
-              <td className="py-2">S/ {product.price.toFixed(2)}</td>
-              <td className="py-2">{product.stock}</td>
-              <td className="py-2 flex gap-2">
-                <button className="text-blue-700 underline" onClick={() => onEdit(product)}>Editar</button>
-                <button className="text-red-600 underline" onClick={() => onDelete(product.id)}>Eliminar</button>
+            <tr key={product.id} className="border-b transition-colors duration-200 hover:bg-stone-100">
+              <td className="py-3 px-8 ">{product.name}</td>
+              <td className="py-3 px-4">{product.brand}</td>
+              <td className="py-3 px-4">{product.category}</td>
+              <td className="py-3 px-4 font-semibold">S/ {product.price}</td>
+              <td className="py-3 px-4">{product.stock}</td>
+              <td className="py-3 px-4 flex flex-col items-center gap-3">
+                <button 
+                  className="px-3 w-full py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                  onClick={() => onEdit(product)}
+                >
+                  Editar
+                </button>
+                <button 
+                  className="px-3 w-full py-1 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+                  onClick={() => onDelete(product.id)}
+                >
+                  Eliminar
+                </button>
               </td>
             </tr>
           ))}

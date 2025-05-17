@@ -1,17 +1,42 @@
 "use client";
 import React from "react";
-import Comment from "./Comment";
+
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { Star } from "lucide-react";
+import { useProduct } from "@/store/ProductStore";
+import CommentComponent from "./CommentComponent";
+import { addComments } from "@/services/productService";
 
 function ComentsList() {
   const usuario = useUser();
+  const { currentProduct } = useProduct();
   const [stars, setStars] = React.useState(0);
+  const [comment, setComment] = React.useState("");
+
+  async function saveComment(formData: FormData) {
+    // Prevent empty comments
+    if (!comment.trim() || stars === 0) return;
+    await addComments(currentProduct.id, {
+      opinion: comment,
+      rating: stars,
+      userImage: usuario.user?.imageUrl!,
+      userName: usuario.user?.fullName!,
+    });
+    setComment("");
+    setStars(0);
+  }
+
   return (
     <div className="col-span-8 pt-8 border-t-2 gap-4 flex flex-col">
       <h1 className="font-bold text-xl">Comentarios</h1>
-      <form className="flex flex-col gap-4">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          saveComment(new FormData(e.currentTarget));
+        }}
+        className="flex flex-col gap-4"
+      >
         <div className="w-full flex flex-row gap-4">
           <Image
             src={usuario.user?.imageUrl || ""}
@@ -36,6 +61,8 @@ function ComentsList() {
               className="p-2 border border-gray-300 rounded w-full"
               rows={4}
               placeholder="Agrega tu comentario..."
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
             />
           </div>
         </div>
@@ -46,9 +73,11 @@ function ComentsList() {
           Enviar
         </button>
       </form>
-      {Array.from({ length: 10 }, (_, index) => (
-        <Comment key={index} />
-      ))}
+
+      {currentProduct.comments &&
+        currentProduct.comments.map((v, index) => (
+          <CommentComponent key={index} {...v} />
+        ))}
     </div>
   );
 }

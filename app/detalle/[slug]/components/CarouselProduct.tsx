@@ -16,17 +16,18 @@ function CarouselProduct() {
     <div className="z-10 col-span-4 p-4 w-full flex flex-row items-center justify-center">
       <Carousel className=" w-full max-w-2xl lg:w-full mx-auto">
         <CarouselContent>
-          {currentProduct.images.map((v, i) => (
-            <CarouselItem key={v + i}>
-              <Image
-              className="w-full"
-                src={v}
-                width={800}
-                height={800}
-                alt={currentProduct.name}
-              />
-            </CarouselItem>
-          ))}
+          {currentProduct &&
+            currentProduct.images.map((v, i) => (
+              <CarouselItem key={v + i}>
+                <Image
+                  className="w-full"
+                  src={v || "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"}
+                  width={800}
+                  height={800}
+                  alt={currentProduct.name}
+                />
+              </CarouselItem>
+            ))}
         </CarouselContent>
         <CarouselPrevious />
         <CarouselNext />

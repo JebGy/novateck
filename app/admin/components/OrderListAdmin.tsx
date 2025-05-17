@@ -8,7 +8,7 @@ interface OrderListAdminProps {
 
 function OrderListAdmin({ orders, onStatusChange }: OrderListAdminProps) {
   return (
-    <div className="bg-white rounded shadow p-4 mt-6">
+    <div className="bg-white rounded row-span-1 h-full p-4">
       <h2 className="text-lg font-bold mb-2">Gestión de pedidos</h2>
       <table className="w-full text-left">
         <thead>

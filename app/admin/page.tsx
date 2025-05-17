@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProductForm from "./components/ProductForm";
 import ProductListAdmin from "./components/ProductListAdmin";
 import OrderListAdmin from "./components/OrderListAdmin";
 import { Product, Order } from "@/types";
+import { deleteProduct, getAllProducts } from "@/services/productService";
 
 // Dummy data for UI demo
 const initialProducts: Product[] = [];
@@ -23,13 +24,21 @@ function AdminPage() {
   };
 
   const handleDeleteProduct = (id: string) => {
-    setProducts((prev) => prev.filter((p) => p.id !== id));
+    deleteProduct(id).then(() => {
+      setProducts((prev) => prev.filter((p) => p.id !== id));
+    });
   };
 
   const handleUpdateProduct = (product: Product) => {
     setProducts((prev) => prev.map((p) => (p.id === product.id ? product : p)));
     setEditingProduct(null);
   };
+
+  useEffect(() => {
+    getAllProducts()
+      .then((data) => setProducts(data))
+      .catch((error) => console.error("Failed to fetch products:", error));
+  }, []);
 
   const handleStatusChange = (
     orderId: string,
@@ -47,10 +56,10 @@ function AdminPage() {
       <h1 className="text-2xl font-bold mb-6">Panel de administración</h1>
       <section className="grid grid-cols-2 grid-rows-2">
         {editingProduct ? (
-        <ProductForm onSubmit={handleUpdateProduct} />
-      ) : (
-        <ProductForm onSubmit={handleAddProduct} />
-      )}
+          <ProductForm onSubmit={handleUpdateProduct} />
+        ) : (
+          <ProductForm onSubmit={handleAddProduct} />
+        )}
         <ProductListAdmin
           products={products}
           onEdit={handleEditProduct}
