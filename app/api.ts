@@ -1,4 +1,5 @@
 import { db } from "@/lib/firebase";
+import { deleteCart } from "@/services/cartService";
 import { createOrder } from "@/services/orderService";
 import { Cart, Order, Product } from "@/types";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -75,9 +76,7 @@ export const api = {
 
             createOrder(
               {
-                items: (cart.items || []).filter(
-                  (v: { v: Product }) => v && v.v
-                ), // Filtra items undefined o sin product
+                items: cart.items!, // Filtra items undefined o sin product
                 deliveryStatus: "EN_PROCESO",
                 totalAmount: payment.transaction_details?.total_paid_amount!,
                 userId: cart.user_id,
@@ -90,6 +89,7 @@ export const api = {
               } as Order,
               id
             );
+            deleteCart(cart.user_id);
 
             console.log(`Payment ${id} successfully added to Firestore`);
           }

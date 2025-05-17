@@ -25,3 +25,7 @@ export const saveCart = async (userId: string, cart: Cart) => {
     await setDoc(cartRef, cart);
   }
 };
+export const deleteCart = async (userId: string) => {
+  const cartRef = doc(db, "carts", userId);
+  await setDoc(cartRef, {}, { merge: false });
+};

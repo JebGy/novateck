@@ -16,7 +16,7 @@ function DetailProduct() {
 
   useEffect(() => {
     if (currentProduct.id === "" && path !== "") {
-      getProductById(path.split("/")[2]).then((v) =>
+      getProductById(path!.split("/")[2]).then((v) =>
         v ? setCurrentProduct(v) : null
       );
     }

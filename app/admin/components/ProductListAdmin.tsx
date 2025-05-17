@@ -32,7 +32,7 @@ function ProductListAdmin({ products, onEdit, onDelete }: ProductListAdminProps)
               <td className="py-3 px-4">{product.stock}</td>
               <td className="py-3 px-4 flex flex-col items-center gap-3">
                 <button 
-                  className="px-3 w-full py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+                  className="px-3 w-full py-1 bg-blue-800 text-white rounded hover:bg-blue-900 transition-colors"
                   onClick={() => onEdit(product)}
                 >
                   Editar

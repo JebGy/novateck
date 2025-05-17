@@ -5,6 +5,7 @@ import ProductListAdmin from "./components/ProductListAdmin";
 import OrderListAdmin from "./components/OrderListAdmin";
 import { Product, Order } from "@/types";
 import { deleteProduct, getAllProducts } from "@/services/productService";
+import { getAllOrders } from "@/services/orderService";
 
 // Dummy data for UI demo
 const initialProducts: Product[] = [];
@@ -38,6 +39,9 @@ function AdminPage() {
     getAllProducts()
       .then((data) => setProducts(data))
       .catch((error) => console.error("Failed to fetch products:", error));
+    getAllOrders()
+      .then((data) => setOrders(data))
+      .catch((error) => console.error("Failed to fetch orders:", error));
   }, []);
 
   const handleStatusChange = (
