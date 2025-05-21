@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  distDir: "build",
   output: "standalone",
   images: {
     // Next.js does not support a wildcard for optimizing images from any domain.
